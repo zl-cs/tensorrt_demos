@@ -167,7 +167,8 @@ def build_engine(model_name, do_int8, dla_core, verbose=False):
                 config.DLA_core = dla_core
                 config.set_flag(trt.BuilderFlag.STRICT_TYPES)
                 print('Using DLA core %d.' % dla_core)
-            engine = builder.build_engine(network, config)
+            engine = builder.build_serialized_network(network, config)
+
 
         if engine is not None:
             print('Completed creating engine.')
@@ -202,9 +203,9 @@ def main():
     if engine is None:
         raise SystemExit('ERROR: failed to build the TensorRT engine!')
 
-    engine_path = '%s.trt' % args.model
+    engine_path = '%s.plan' % args.model
     with open(engine_path, 'wb') as f:
-        f.write(engine.serialize())
+        f.write(engine)
     print('Serialized the TensorRT engine to file: %s' % engine_path)
 
 
