@@ -9,7 +9,7 @@ import ctypes
 import numpy as np
 import tensorrt as trt
 
-from yolo_to_onnx import (is_pan_arch, DarkNetParser, get_category_num,
+from zl_utils import (is_pan_arch, DarkNetParser, get_category_num,
                           get_h_and_w, get_output_convs, get_anchors)
 
 

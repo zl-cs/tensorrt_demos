@@ -33,6 +33,7 @@ yolo/yolo*.trt
 yolo/*.json
 yolo/calib_images/
 yolo/calib_*.bin
+yolo/yolo_plan/*.plan
 
 plugins/*.o
 plugins/*.so

@@ -56,7 +56,7 @@ import argparse
 
 import tensorrt as trt
 
-from yolo_to_onnx import DarkNetParser, get_h_and_w
+from zl_utils import DarkNetParser, get_h_and_w
 from plugins import add_yolo_plugins, add_concat
 
 
@@ -203,7 +203,7 @@ def main():
     if engine is None:
         raise SystemExit('ERROR: failed to build the TensorRT engine!')
 
-    engine_path = '%s.plan' % args.model
+    engine_path = './yolo_plan/%s.plan' % args.model
     with open(engine_path, 'wb') as f:
         f.write(engine)
     print('Serialized the TensorRT engine to file: %s' % engine_path)
